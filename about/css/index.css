@@ -175,7 +175,7 @@ EXAMPLES:
 	top: -2px;
 }
 .cool_button:active > div{
-	border-color: #666;
+	border-color: #000;
 	color: #333;
 	top: 2px;
 }

@@ -40,7 +40,7 @@ canvas{
 	cursor: url('cursors/ink.png') 0 30, auto;
 }
 #canvasses[cursor=drag]{
-	cursor: url('cursors/drag.png') 15 15, auto;
+	cursor: url('cursors/move.png') 15 15, auto;
 }
 #canvasses[cursor=erase]{
 	cursor: url('cursors/erase.png') 5 25, auto;
@@ -194,7 +194,7 @@ div[big=yes] .play_button_label{
 	color: #111;
 }
 #sidebar[mode=play] .mini_button:hover{
-	background: #666;
+	background: #000;
 }
 #sidebar a{ color: #777; }
 #sidebar a:hover{ color: #999; }
@@ -228,7 +228,7 @@ div[big=yes] .play_button_label{
 	border: 1px solid #aaa;
 	width:100%;
 	background: #ccc;
-	color: #666;
+	color: #000;
 	font-size: 15px;
 	font-weight: 100;
 }

@@ -358,7 +358,7 @@ function Edge(model, config){
 
 		// Width & Color
 		ctx.lineWidth = 4*Math.abs(self.strength)-2;
-		ctx.strokeStyle = "#666";
+		ctx.strokeStyle = "#000000";
 
 		// Translate & Rotate!
 		ctx.save();

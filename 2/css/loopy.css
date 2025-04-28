@@ -1,6 +1,6 @@
 body{
 	margin:0;
-	background: #fff;
+	background: #FEF3C7;
 
 	font-family: Helvetica, Arial, sans-serif;
 	font-weight: normal;
@@ -22,16 +22,16 @@ canvas{
 	width: 100%;
 }
 #canvasses[cursor=ink]{
-	cursor: url('cursors/ink.png') 0 30, auto;
+	cursor: url('cursors/ink.png') 0 0, auto;
 }
 #canvasses[cursor=drag]{
-	cursor: url('cursors/drag.png') 15 15, auto;
+	cursor: url('cursors/move.png') 0 0, auto;
 }
 #canvasses[cursor=erase]{
-	cursor: url('cursors/erase.png') 5 25, auto;
+	cursor: url('cursors/erase.png') 0 0, auto;
 }
 #canvasses[cursor=label]{
-	cursor: url('cursors/label.png') 15 15, auto;
+	cursor: url('cursors/label.png') 0 0, auto;
 }
 
 
@@ -198,7 +198,7 @@ div[big=yes] .play_button_label{
 	color: #111;
 }
 #sidebar[mode=play] .mini_button:hover{
-	background: #666;
+	background: #000;
 }
 #sidebar[mode=play] .not_in_play_mode{
 	display: none;
@@ -241,7 +241,7 @@ display: none
 	border: 1px solid #aaa;
 	width:100%;
 	background: #ccc;
-	color: #666;
+	color: #000;
 	font-size: 15px;
 	font-weight: 100;
 }

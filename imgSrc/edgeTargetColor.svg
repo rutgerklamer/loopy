@@ -899,7 +899,7 @@
   <sodipodi:namedview
      id="base"
      pagecolor="#dddddd"
-     bordercolor="#666666"
+     bordercolor="#000000"
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
@@ -1141,7 +1141,7 @@
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
     <rect
-       style="opacity:1;fill:#666666;fill-opacity:1;stroke:none;stroke-width:1.58749998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.58749998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1203"
        width="14.699075"
        height="21.166666"

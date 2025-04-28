@@ -5,15 +5,17 @@ NODE!
 **********************************/
 
 LoopyNode.COLORS = {
-	0: "#EA3E3E", // red
-	1: "#EA9D51", // orange
-	2: "#FEEE43", // yellow
-	3: "#BFEE3F", // green
-	4: "#7FD4FF", // blue
-	5: "#A97FFF", // purple
-	6: "#DDDDDD",  // light grey -> died
-	7: "rgba(0,0,0,.3)"  // node settings
-};
+	0: "#FF4C4C", // red
+	1: "#FF9F45", // orange
+	2: "#FFD93D", // yellow
+	3: "#4ADE80", // green
+	4: "#60A5FA", // blue
+	5: "#C084FC", // purple
+	6: "#F5F5F5", // light grey (died)
+	7: "rgba(0,0,0,0.15)" // node settings (nog iets lichter)
+  }
+  
+
 
 
 LoopyNode.DEFAULT_RADIUS = 60;
@@ -503,26 +505,67 @@ function LoopyNode(model, config){
 			for(let a = 0; a < 2*Math.PI;a+=Math.PI*0.25) line(a);
 		}
 
+
+function wrapText(ctx, text, maxWidth) {
+    const words = text.split(" ");
+    const lines = [];
+    let currentLine = words[0];
+
+    for (let i = 1; i < words.length; i++) {
+        const word = words[i];
+        const testLine = currentLine + " " + word;
+        const metrics = ctx.measureText(testLine);
+        if (metrics.width <= maxWidth) {
+            currentLine = testLine;
+        } else {
+            lines.push(currentLine);
+            currentLine = word;
+        }
+    }
+    lines.push(currentLine);
+    return lines;
+}
+
 		// Text!
-		if(self.label){
+		if (self.label) {
 			let fontsize = 40;
-			ctx.font = "normal "+fontsize+"px sans-serif";
+			ctx.font = "normal " + fontsize + "px sans-serif";
 			ctx.textAlign = "center";
 			ctx.textBaseline = "middle";
 			ctx.fillStyle = "#000";
-			let width = ctx.measureText(self.label).width;
-
-			while(width > r*2 - 30){// - 30){ // -30 for buffer. HACK: HARD-CODED.
-				fontsize -= 1;
-				ctx.font = "normal "+fontsize+"px sans-serif";
-				width = ctx.measureText(self.label).width;
+		
+			let lines = wrapText(ctx, self.label, r * 2 - 30); // initial wrap
+			let maxWidth = Math.max(...lines.map(line => ctx.measureText(line).width));
+		
+			// Adjust font size if necessary
+			while (maxWidth > r * 2 - 30) {
+				fontsize -= 2;
+				ctx.font = "normal " + fontsize + "px sans-serif";
+				lines = wrapText(ctx, self.label, r * 2 - 30);
+				maxWidth = Math.max(...lines.map(line => ctx.measureText(line).width));
 			}
+		
+			// Drawing
 			ctx.fillStyle = "rgba(100%,100%,100%,.15)";
 			const padding = 3;
-			for(let x=-padding;x<=padding;x++)for(let y=-padding;y<=padding;y++) ctx.fillText(self.label, x, y);
+			const lineHeight = fontsize * 1.2;
+		
+			for (let i = 0; i < lines.length; i++) {
+				const y = (i - (lines.length - 1) / 2) * lineHeight;
+				for (let xOffset = -padding; xOffset <= padding; xOffset++) {
+					for (let yOffset = -padding; yOffset <= padding; yOffset++) {
+						ctx.fillText(lines[i], xOffset, y + yOffset);
+					}
+				}
+			}
+		
 			ctx.fillStyle = "#000";
-			ctx.fillText(self.label, 0, 0);
+			for (let i = 0; i < lines.length; i++) {
+				const y = (i - (lines.length - 1) / 2) * lineHeight;
+				ctx.fillText(lines[i], 0, y);
+			}
 		}
+		
 
 		// WOBBLE CONTROLS
 		const cl = 40;

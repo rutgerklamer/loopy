@@ -5,7 +5,7 @@ EDGE!
 **********************************/
 Edge.COLORS = {
 	"-3":"#000000", // black
-	"-1":"#666666", // grey
+	"-1":"#000000", // grey
 	0: "#EA3E3E", // red
 	1: "#EA9D51", // orange
 	2: "#FEEE43", // yellow
@@ -453,10 +453,10 @@ function Edge(model, config){
 
 		// Width & Color
 		if(self.edgeTargetColor===-3) {
-			ctx.lineWidth = 4;
-		} else ctx.lineWidth = 4*Math.abs(self.strength)-2;
+			ctx.lineWidth = 8;
+		} else ctx.lineWidth = 8*Math.abs(self.strength)-2;
 		const gradient = ctx.createLinearGradient(0,0,ax,ay);
-		gradient.addColorStop(0.4,Edge.COLORS[self.edgeFilterColor]);
+		gradient.addColorStop(0.8,Edge.COLORS[self.edgeFilterColor]);
 		if(self.edgeTargetColor===-2) {
 			for(let x = 0;x<6;x++) gradient.addColorStop(0.5+x/10,Edge.COLORS[x]);
 		} else if(self.edgeTargetColor===-1) gradient.addColorStop(1,Edge.COLORS[self.edgeFilterColor]);
@@ -532,7 +532,7 @@ function Edge(model, config){
 			ctx.save();
 			ctx.translate(lx, ly);
 			ctx.rotate(-a);
-			ctx.fillStyle = "#999";
+			ctx.fillStyle = "#6B7280";
 			ctx.fillText(self.label, 0, 0);
 			ctx.restore();
 		}
